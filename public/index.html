@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nama planet</title>
+    <style>
+      th,
+      td {
+        border: 3px solid;
+        text-align: center;
+      }
+
+      table {
+        border-collapse: collapse;
+        text-align: center;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      th {
+        background-color: orange;
+      }
+
+      td {
+        background-color: bisque;
+      }
+
+      body {
+        background-color: gainsboro;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Nama Planet Di Tata Surya</h1>
+    <table>
+      <thead>
+        <th>name</th>
+        <th>mass</th>
+        <th>diameter</th>
+        <th>density</th>
+        <th>gravity</th>
+        <th>length of day</th>
+        <th>distance from sun</th>
+        <th>mean temperature</th>
+        <th>number of sun</th>
+        <th>notes</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div></div>
+    <script>
+      fetch("api/planet")
+        .then((response) => response.json())
+        .then((planet) => {
+          const tbody = document.querySelector("tbody");
+          planet.forEach((p) => {
+            const tr = document.createElement("tr");
+
+            const tdName = document.createElement("td");
+            tdName.textContent = p.name;
+            tr.appendChild(tdName);
+
+            const tdMass = document.createElement("td");
+            tdMass.textContent = p.mass;
+            tr.appendChild(tdMass);
+
+            const tdDiameter = document.createElement("td");
+            tdDiameter.textContent = p.diameter;
+            tr.appendChild(tdDiameter);
+
+            const tdDensity = document.createElement("td");
+            tdDensity.textContent = p.density;
+            tr.appendChild(tdDensity);
+
+            const tdGravity = document.createElement("td");
+            tdGravity.textContent = p.gravity;
+            tr.appendChild(tdGravity);
+
+            const tdLength = document.createElement("td");
+            tdLength.textContent = p.length_of_day;
+            tr.appendChild(tdLength);
+
+            const tdDistance = document.createElement("td");
+            tdDistance.textContent = p.distance_from_sun;
+            tr.appendChild(tdDistance);
+
+            const tdMean = document.createElement("td");
+            tdMean.textContent = p.mean_temperature;
+            tr.appendChild(tdMean);
+
+            const tdNumber = document.createElement("td");
+            tdNumber.textContent = p.number_of_moons;
+            tr.appendChild(tdNumber);
+
+            const tdNotes = document.createElement("td");
+            tdNotes.textContent = p.notes;
+            tr.appendChild(tdNotes);
+
+            tbody.appendChild(tr);
+          });
+        });
+    </script>
+  </body>
+</html>
