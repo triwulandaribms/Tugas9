@@ -50,15 +50,17 @@
         <th>notes</th>
       </thead>
       <tbody></tbody>
+      <h1>Data Mahasiswa</h1>
+      <p></p>
     </table>
 
     <div></div>
     <script>
       fetch("api/planet")
         .then((response) => response.json())
-        .then((planet) => {
+        .then((plane) => {
           const tbody = document.querySelector("tbody");
-          planet.forEach((p) => {
+          plane.forEach((p) => {
             const tr = document.createElement("tr");
 
             const tdName = document.createElement("td");
@@ -102,6 +104,18 @@
             tr.appendChild(tdNotes);
 
             tbody.appendChild(tr);
+          });
+        });
+
+      fetch("api/data")
+        .then((response) => response.json())
+        .then((data) => {
+          data.forEach((value) => {
+            const isi = document.createElement("p");
+
+            isi.textContent = value.data;
+
+            p.appendChild(isi);
           });
         });
     </script>
