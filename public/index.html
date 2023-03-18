@@ -29,6 +29,10 @@
         background-color: bisque;
       }
 
+      div {
+        text-align: center;
+      }
+
       body {
         background-color: gainsboro;
       }
@@ -51,10 +55,12 @@
       </thead>
       <tbody></tbody>
       <h1>Data Mahasiswa</h1>
-      <p></p>
     </table>
-
-    <div></div>
+    <div>
+      <p></p>
+      <button>Login</button>
+      <button>Next</button>
+    </div>
     <script>
       fetch("api/planet")
         .then((response) => response.json())
@@ -110,13 +116,9 @@
       fetch("api/data")
         .then((response) => response.json())
         .then((data) => {
-          data.forEach((value) => {
-            const isi = document.createElement("p");
-
-            isi.textContent = value.data;
-
-            p.appendChild(isi);
-          });
+          const value = document.querySelector("p");
+          value.textContent = data;
+          value.appendChild(p);
         });
     </script>
   </body>

@@ -4,7 +4,10 @@ import { client } from "./db.js";
 
 const app = express();
 
-const data = ["Tri Wulandari", "D3 Manajemen informatika"];
+const data = [
+  "Tekan tombol dibawah ini untuk melanjutkan ke halaman selanjutnya",
+];
+
 app.use(express.static("public"));
 
 app.get("/api/planet", async (_req, res) => {
